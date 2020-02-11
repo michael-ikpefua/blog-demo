@@ -135,9 +135,9 @@ class CreatePermissionTables extends Migration
 
     protected function seedAssignUserPermissionsToSuperAdminRole()
     {
-        $superRole = Role::findByName(Roles::SUPER_ADMIN);
+        $user = User::first();
 
-        $superRole->givePermissionTo([
+        $user->givePermissionTo([
             Permissions::USER_CREATE,
             Permissions::USER_READ,
             Permissions::USER_UPDATE,

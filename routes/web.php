@@ -11,8 +11,6 @@
 |
 */
 
-use Illuminate\Routing\Route;
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,4 +27,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('users', 'UserController@index')->name('user.index');
     Route::get('users/create', 'UserController@create')->name('user.create');
     Route::post('users', 'UserController@store')->name('user.store');
+    Route::get('users/{userModel}', 'UserController@show')->name('user.show');
+    Route::get('users/{user}/edit', 'UserController@edit')->name('user.edit');
+    Route::patch('user/{user}', 'UserController@update')->name('user.update');
+    Route::delete('user/{user}', 'UserController@destroy')->name('user.delete');
+
+
+    Route::post('users/{user}/permission', 'UserPermissionController')->name('user.permission');
+
 });
