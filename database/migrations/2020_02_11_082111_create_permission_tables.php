@@ -93,9 +93,9 @@ class CreatePermissionTables extends Migration
          */
         $this->seedRolesAndPermissions();
 
-        // $this->seedAssignSuperAdminRoleToUser();
+        $this->seedAssignSuperAdminRoleToUser();
 
-        // $this->seedAssignUserPermissionsToSuperAdminRole();
+        $this->seedAssignUserPermissionsToSuperAdminRole();
     }
 
     /**
@@ -117,6 +117,8 @@ class CreatePermissionTables extends Migration
     protected function seedRolesAndPermissions()
     {
         Role::findOrCreate(Roles::SUPER_ADMIN);
+        Role::findOrCreate(Roles::ADMIN);
+        Role::findOrCreate(Roles::CUSTOMER);
 
         Permission::findOrCreate(Permissions::USER_CREATE);
         Permission::findOrCreate(Permissions::USER_READ);

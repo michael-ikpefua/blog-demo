@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Routing\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('customer', 'DashboardController@customer')->name('customer.index');
+
+    Route::get('users', 'UserController@index')->name('user.index');
+    Route::get('users/create', 'UserController@create')->name('user.create');
+    Route::post('users', 'UserController@store')->name('user.store');
+});

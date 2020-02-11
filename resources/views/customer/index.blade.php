@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in! as either Admin or Super Admin.
+                    You are logged in! as a Customer
                 </div>
             </div>
         </div>
